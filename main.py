@@ -102,6 +102,7 @@ async def unfreeze_station(unfreeze: Unfreeze):
         team.summary_time = team.summary_time + float(timing.total_seconds())
         team.time = datetime.datetime.now()
         team.current_station = 0
+        team.last_station = station_id
         team.save()
 
         return {"code": 200}
