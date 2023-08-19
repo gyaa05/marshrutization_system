@@ -114,6 +114,8 @@ async def unfreeze_station(unfreeze: Unfreeze):
 async def find_station(team_id: TeamId):
     team = Team.get(Team.id == team_id.team_id)
     stations = eval(team.stations)
+    if (len(stations) == 0):
+        return {"code": 200, "details": "The end!"}
     all_stations = list(Station.select())
     if team.last_station != 0:
         last_station = all_stations[team.last_station]
